@@ -6,10 +6,11 @@ from flask.cli import with_appcontext
 import click
 import sqlite3
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
 def get_db():
   if 'db' not in g:
-    dbname = current_app.config['DATABASE']
-    g.db = psycopg2.connect(f'dbname = {dbname}')
+    g.db = psycopg2.connect(DATABASE_URL, sslmode='require')
   return g.db
   
 def close_db(e=None):
