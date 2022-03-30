@@ -135,6 +135,8 @@ def thisday():
   this_day = request.args.get("d",1)
   this_month = request.args.get("m",1)
   this_year = request.args.get("y",1)
+  if this_day='01' and this_month='01' and this_year='1':
+    this_date = d
   user_id = session.get("userid")    
   this_date = str(this_year)+'-'+this_month+'-'+this_day
   cursor.execute("""select id, name, description, shopping from tasks where oid = %s and deadline = %s;""", (user_id, this_date))
