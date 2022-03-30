@@ -16,7 +16,6 @@ itsdangerous==2.0.1
 Jinja2==3.0.1
 MarkupSafe==2.0.1
 packaging==20.9
--e git+ssh://git@github.com/Genskill2/005-web-application-NM604.git@477b6457df17144e279d5172fc29c4b7437f1ea7#egg=petshop
 pkg_resources==0.0.0
 pluggy==0.13.1
 psycopg2==2.9.1
