@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="menu">
+      <h6 style="color:White; font-family: sans-serif;"> &emsp;<a href="/calender" style="color:White; font-family: sans-serif;">Calender</a> &emsp; <a href="/today" style="color:White; font-family: sans-serif;">Today</a> &emsp; <a href="{{url_for('plan.add_task')}}" style="color:White;">Add</a></h6>
+</div>
+
+<div class="out">
+<h6 style="color:White; font-family: sans-serif;">
+<a href="/logout" style="color:White; font-family: sans-serif;">
+Logout
+</a>
+</h6>
+</div>
+
+
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th><h6>Task</h6></th>
+      <th><h6>Description</h6></th>
+      {% if listshopping%}
+      <th><h6>Shopping List</h6></th>
+      {% endif %}
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for id, name, description, shopping in info %}
+      <td>{{name}}</td>
+      <td>{{description}}</td>
+      {% if listshopping%}
+      {% if shopping == 'y'%}
+      <td>
+      <table>
+      <thead>
+        <tr>
+        <th><h6>Item</h6></th>
+        <th><h6>Qty</h6></th>
+        <th> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        {% for item, qty, tid in listshopping %}
+        {% if id == tid %}
+        <td>{{item}}</td>
+        <td>{{qty}}</td>
+        <td><div class = "inputBx">
+						<a href="{{url_for('plan.deleteitem')}}?name={{name}}&item={{item}}">Delete</a>
+						</div></td>
+        {% endif %}
+        </tr>
+		  {%endfor%}
+		  </td>
+		  </tbody>
+		  </table>
+		  {% else %}
+		  <td> </td>
+      {% endif %}
+      {% endif %}
+      <td><div class = "inputBx">
+						<a href="{{url_for('plan.deletetask')}}?name={{name}}">Mark Done</a>
+						</div></td>
+		</tr>
+		{%endfor%}
+		</td>
+		</tbody>
+	</table>
+
+{% endblock %}

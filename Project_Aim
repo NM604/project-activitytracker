@@ -1,0 +1,27 @@
+Project 3 - Activity Planner / Task Manager
+
+Features:
+
+1. User Login (Mandatory)                                                                 
+
+2. Have 3 Tabs:
+    a. One is for accessing a calender with an interface such that the
+    next 31 days are visible (each day seen as a tile with number of
+    tasks for each day)
+    b. One is to access the current day's tasks in detail
+    c. Log Out option
+
+3. The current day's tasks will be shown with Time Left to Complete (if
+   provided)
+   
+4. Users can add or modify every task's timing and description (if
+   needed)   
+
+5. If the task is chosen as a shopping task, an option will be provided
+   to add a shopping list where items can be added and crossed out
+   
+6. A button will be displayed next to each task of the day, to mark it
+   complete which will delete it from the day's tasks page 
+   
+7. {To be confirmed} Tasks not completed after the day ends, will be deleted
+   automatically (assuming it has been compeleted)                           

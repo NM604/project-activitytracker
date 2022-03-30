@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="menu">
+      <h6 style="color:White; font-family: sans-serif;"> &emsp;<a href="/calender" style="color:White; font-family: sans-serif;">Calender</a> &emsp; <a href="/today" style="color:White; font-family: sans-serif;">Today</a></h6>
+</div>
+
+<div class="out">
+<h6 style="color:White; font-family: sans-serif;">
+<a href="/logout" style="color:White; font-family: sans-serif;">
+Logout
+</a>
+</h6>
+</div>
+
+<div class="calendar">
+
+			<div class="col leftCol">
+				<div class="content">
+					<h1 class="date">{{today}}<span>{{fdate}}</span></h1>
+					<div class="notes">
+						<ol class="noteList" start="0">
+						{% if fday!=1 and fmonth!=1 and fyear!=1 and listtasks%}
+						<li style="list-style:none;">Tasks for {{fday}}-{{fmonth}}-{{fyear}}</li>
+						{% for tasks in listtasks %}
+						{% for task in tasks %}
+							<li>{{task}}</li>
+						{%endfor%}
+						{%endfor%}
+						{% endif %}
+						</ol>
+						<div class = "inputBx">
+						<a href="{{url_for('plan.thisday')}}?d={{fday}}&m={{fmonth}}&y={{fyear}}">More Info</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col rightCol">
+				<div class="content">
+					<h2 class="year">{{year}}</h2>
+					<ul class="months">
+						<script>
+							for( var _i = 1; _i <= 12; _i += 1 ){
+								var _addClass = '';
+								var _addTitle = '';
+								if( _i === 1 ){_addTitle = 'Jan';}
+								if( _i === 2 ){_addTitle = 'Feb';}
+								if( _i === 3 ){_addTitle = 'Mar';}
+								if( _i === 4 ){_addTitle = 'Apr';}
+								if( _i === 5 ){_addTitle = 'May';}
+								if( _i === 6 ){_addTitle = 'Jun';}
+								if( _i === 7 ){_addTitle = 'Jul';}
+								if( _i === 8 ){_addTitle = 'Aug';}
+								if( _i === 9 ){_addTitle = 'Sep';}
+								if( _i === 10 ){_addTitle = 'Oct';}
+								if( _i === 11 ){_addTitle = 'Nov';}
+								if( _i === 12 ){_addTitle = 'Dec';}
+								
+								if( _i === {{m}} ){ _addClass = ' class="selected"'; }
+								
+								document.write( '<li><a href="#" title="'+_addTitle+'" data-value="'+_i+'"'+_addClass+'>'+_addTitle+'</a></li>' );
+							}
+						</script>
+					</ul>
+					<div class="clearfix"></div>
+					<ul class="weekday">
+						<li><a href="#" title="Mon" data-value="1">Mon</a></li>
+						<li><a href="#" title="Tue" data-value="2">Tue</a></li>
+						<li><a href="#" title="Wed" data-value="3">Wed</a></li>
+						<li><a href="#" title="Thu" data-value="4">Thu</a></li>
+						<li><a href="#" title="Fri" data-value="5">Fri</a></li>
+						<li><a href="#" title="Say" data-value="6">Sat</a></li>
+						<li><a href="#" title="Sun" data-value="7">Sun</a></li>
+					</ul>
+					<div class="clearfix"></div>
+					<ul class="days">
+						<script>
+							for( var _i = 1; _i <= 31; _i += 1 ){
+								var _addClass = '';
+								if( _i === {{day}} ){ _addClass = ' class="selected"'; }
+								document.write( '<li><a href="/calender?d='+_i+'&m='+{{m}}+'&y='+{{year}}+'" title="'+_i+'" data-value="'+_i+'"'+_addClass+'>'+_i+'</a></li>' );
+							}
+						</script>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+
+		</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="menu">
+      <h6 style="color:White; font-family: sans-serif;"> &emsp;<a href="/calender" style="color:White; font-family: sans-serif;">Calender</a> &emsp; <a href="/today" style="color:White; font-family: sans-serif;">Today</a> &emsp; <a href="{{url_for('plan.add_task')}}" style="color:White;">Add {{shop}}</a></h6>
+</div>
+
+<div class="out">
+<h6 style="color:White; font-family: sans-serif;">
+<a href="/logout" style="color:White; font-family: sans-serif;">
+Logout
+</a>
+</h6>
+</div>
+
+<div class="box">
+          <div class="form">
+              <h2> ADD ITEM</h2>
+              <form method = "post" action = "/additems">
+              <div class = "inputBx">
+                  <input name = "itemname" type = "text" id = "itemname" placeholder = "Item Name" required/>
+                  <img src = "{{url_for('static', filename='bag.png')}}" width="50" height="50">
+              </div>
+              <div class = "inputBx">
+                  <input name = "itemquant" type = "text" id = "itemquant" placeholder = "Quantity" required/>
+                  <img src = "{{url_for('static', filename='weight.png')}}" width="50" height="50">
+                  </div>
+                  <div class = "inputBx">
+                  <label for="shstatus"> Done? </label>
+                  <input type="checkbox" id="shstatus" name = "shstatus" value="y"/>
+              </div>
+              <div class = "inputBx">
+                  <input type = "submit" value = "Submit"/>
+              </div>
+              </form>
+        </div>
+     </div>
+
+{% endblock %}

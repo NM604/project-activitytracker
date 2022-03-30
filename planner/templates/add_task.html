@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="menu">
+      <h6 style="color:White; font-family: sans-serif;"> &emsp;<a href="/calender" style="color:White; font-family: sans-serif;">Calender</a> &emsp; <a href="/today" style="color:White; font-family: sans-serif;">Today</a> &emsp; <a href="{{url_for('plan.add_task')}}" style="color:White;">Add</a></h6>
+</div>
+
+<div class="out">
+<h6 style="color:White; font-family: sans-serif;">
+<a href="/logout" style="color:White; font-family: sans-serif;">
+Logout
+</a>
+</h6>
+</div>
+
+<div class="box">
+          <div class="form">
+              <h2> ADD TASK</h2>
+              <form method = "post" action = "/addtaskdetails">
+              <div class = "inputBx">
+                  <input name = "name" type = "text" id = "name" placeholder = "Task Name" required/>
+                  <img src = "{{url_for('static', filename='logo.png')}}" width="50" height="50">
+              </div>
+              <div class = "inputBx">
+                  <input name = "description" type = "text" id = "description" placeholder = "Description" required/>
+                  <img src = "{{url_for('static', filename='pen.png')}}" width="50" height="50">
+                  </div>
+                  <div class = "inputBx">
+                  <input name = "deadline" type = "date" id = "deadline" placeholder="yyyy-mm-dd" value=""/>
+                  <img src = "{{url_for('static', filename='date.png')}}" width="50" height="50">
+                  </div>
+                  <div class = "inputBx">
+                  <label for="shopping_status"> Need List </label>
+                  <input type="checkbox" id="shopping_status" name = "shopping_status" value="y"/>
+              </div>
+              <div class = "inputBx">
+                  <input type = "submit" value = "Submit"/>
+              </div>
+              </form>
+        </div>
+     </div>
+
+{% endblock %}
