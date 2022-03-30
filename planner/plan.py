@@ -135,10 +135,10 @@ def thisday():
   this_day = request.args.get("d",1)
   this_month = request.args.get("m",1)
   this_year = request.args.get("y",1)
-  if this_day=='01' and this_month=='01' and this_year=='1':
-    this_date = d
   user_id = session.get("userid")    
   this_date = str(this_year)+'-'+this_month+'-'+this_day
+  if this_day=='01' and this_month=='01' and this_year=='1':
+    this_date = d
   cursor.execute("""select id, name, description, shopping from tasks where oid = %s and deadline = %s;""", (user_id, this_date))
   info = cursor.fetchall()
   cursor.execute("""select item, qty, tid from shoppinglist where deadline = %s;""", (this_date,))
